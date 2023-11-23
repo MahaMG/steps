@@ -1,6 +1,4 @@
 import { useState } from "react";
-import StepMessag from "./StepMessag";
-import Button from "./Button";
 
 const messages = [
   "Learn React ⚛️",
@@ -20,6 +18,7 @@ export default function App() {
     if (step < 3) setStep(step + 1)
   }
 
+
   return (
     <>
       <button className="close" onClick={() => setIsOpen(!isOpen)}>&times;</button>
@@ -31,32 +30,19 @@ export default function App() {
             <div className={step >= 3 ? 'active' : ''}>3</div>
           </div>
 
-          <StepMessag step={step}>
-            <p>{messages[step - 1]}</p>
-            <div className="buttons">
-              <Button
-                textColor='#333'
-                bgColor='eee'
-                onClick={() => alert(`Learn how to ${messages[step - 1]}`)}>
-                Learn how
-              </Button>
-            </div>
-          </StepMessag>
+          <p className="message">
+            Step {step}: {messages[step - 1]}
+          </p>
 
           <div className="buttons">
-            <Button
-              textColor='#fff'
-              bgColor='#7950f2'
+            <button style={{ backgroundColor: '#7950f2', color: '#fff' }}
               onClick={handlePrevious}>
-              <span>👈</span>Previous
-            </Button>
-
-            <Button
-              textColor='#fff'
-              bgColor='#7950f2'
+              Previous
+            </button>
+            <button style={{ backgroundColor: '#7950f2', color: '#fff' }}
               onClick={handleNext}>
-              Next<span>👉</span>
-            </Button>
+              Next
+            </button>
           </div>
         </div>
       )}
